@@ -1,10 +1,9 @@
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -Werror
 LDFLAGS = -lpthread
 DEBUG ?= NO
 
 ifeq (${DEBUG}, NO)
-  CFLAGS += -Werror
   OPTIMIZATION = -O2
 else
   CFLAGS += -g
@@ -21,3 +20,5 @@ n_stress: n_stress.o packets.o ccrc32.o
 
 clean :
 	rm -f *.o n_stress
+
+.PHONY: clean
